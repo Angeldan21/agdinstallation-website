@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Services — AGD Installation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  .page-hero {
+    padding: 80px 0 72px;
+    border-bottom: 1px solid var(--line);
+  }
+  .page-hero .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: end;
+  }
+  .page-hero h1 { font-size: clamp(48px, 7vw, 96px); }
+  .page-hero p { color: var(--muted); font-size: 18px; line-height: 1.6; max-width: 480px; }
+  @media (max-width: 900px) { .page-hero .row { grid-template-columns: 1fr; } }
+
+  .svc-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 1.2fr;
+    gap: 48px;
+    padding: 56px 0;
+    border-top: 1px solid var(--line);
+    align-items: start;
+  }
+  .svc-row:last-child { border-bottom: 1px solid var(--line); }
+  .svc-row .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    padding-top: 8px;
+  }
+  .svc-row h2 { font-size: 36px; line-height: 1.05; }
+  .svc-row .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 20px;
+  }
+  .svc-row .lede {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    margin-bottom: 20px;
+  }
+  .svc-row ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .svc-row ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink-2);
+    font-size: 15px;
+    display: flex;
+    gap: 12px;
+  }
+  .svc-row ul li::before {
+    content: '→';
+    color: var(--accent);
+    font-weight: 600;
+  }
+  @media (max-width: 900px) {
+    .svc-row { grid-template-columns: 1fr; gap: 20px; padding: 40px 0; }
+  }
+
+  .capabilities {
+    background: var(--ink);
+    color: #fff;
+    padding: 100px 0;
+  }
+  .capabilities .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 56px;
+  }
+  .capabilities .cap {
+    padding: 28px 24px 28px 0;
+    border-top: 1px solid #2a2a2a;
+  }
+  .capabilities .cap:nth-child(3n) { padding-right: 0; }
+  .capabilities .cap h4 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 8px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+  }
+  .capabilities .cap p {
+    color: #9a9a9a;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  @media (max-width: 900px) { .capabilities .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="row">
+        <div>
+          <span class="eyebrow">Services</span>
+          <h1 style="margin-top:24px;">Commercial, only.<br/>On schedule, always.</h1>
+        </div>
+        <div>
+          <p>Five core services, one Hayward-based crew. We scope each project with a walkthrough, give you a firm number, and put the same supervisor on the job from first visit to final signoff.</p>
+          <div style="margin-top:24px;">
+            <a href="contact.html" class="btn btn-primary">Request a quote →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 0 0 80px;">
+    <div class="container">
+
+      <div class="svc-row">
+        <div class="num">01</div>
+        <div>
+          <h2>Commercial furniture moving</h2>
+          <div class="tags">
+            <span class="badge">Desks</span>
+            <span class="badge">Conference tables</span>
+            <span class="badge">Lounge &amp; lobby</span>
+          </div>
+        </div>
+        <div>
+          <p class="lede">The core of what we do. Pad-wrapped, route-planned, and handled by crews who move offices for a living — not a side gig.</p>
+          <ul>
+            <li>Pad-wrap and shrink-wrap protection on every piece</li>
+            <li>Elevator pads, floor runners, and wall protection on site</li>
+            <li>Inventory tagging and room-by-room placement</li>
+            <li>Nights, weekends, and after-hours scheduling</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="svc-row">
+        <div class="num">02</div>
+        <div>
+          <h2>Office relocation</h2>
+          <div class="tags">
+            <span class="badge">End-to-end</span>
+            <span class="badge">Multi-floor</span>
+            <span class="badge">Multi-site</span>
+          </div>
+        </div>
+        <div>
+          <p class="lede">A single point of contact for the whole move — from the first walkthrough to the Monday-morning restart.</p>
+          <ul>
+            <li>Move plan, labeling system, and phased schedule</li>
+            <li>Certificate of Insurance and building coordination</li>
+            <li>IT equipment handling with disconnect / reconnect support</li>
+            <li>Reset to spec: everything plugged in and working</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="svc-row">
+        <div class="num">03</div>
+        <div>
+          <h2>Furniture assembly &amp; installation</h2>
+          <div class="tags">
+            <span class="badge">Read plans</span>
+            <span class="badge">Level finish</span>
+            <span class="badge">Punch list</span>
+          </div>
+        </div>
+        <div>
+          <p class="lede">We assemble, level, and finish. From one conference table to a whole floor of workstations, we install to spec and leave a clean punch list.</p>
+          <ul>
+            <li>Installers who read shop drawings and floor plans</li>
+            <li>All major brands — Herman Miller, Steelcase, Haworth, Knoll, Allsteel</li>
+            <li>Height-adjustable desks, monitor arms, power &amp; data routing</li>
+            <li>Debris removal and cardboard recycling included</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="svc-row">
+        <div class="num">04</div>
+        <div>
+          <h2>Cubicle &amp; modular systems</h2>
+          <div class="tags">
+            <span class="badge">Install</span>
+            <span class="badge">Reconfigure</span>
+            <span class="badge">Relocate</span>
+          </div>
+        </div>
+        <div>
+          <p class="lede">Panel systems, benching, private offices — we install new, reconfigure existing, and relocate whole pods without losing parts.</p>
+          <ul>
+            <li>Full panel system installs from pallets to finished floor</li>
+            <li>Reconfiguration with inventory accounting for every part</li>
+            <li>Electrical whip coordination with your electrician</li>
+            <li>Parts sourcing for legacy systems (Ethospace, Action Office, etc.)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="svc-row">
+        <div class="num">05</div>
+        <div>
+          <h2>Decommissioning &amp; liquidation</h2>
+          <div class="tags">
+            <span class="badge">Disassemble</span>
+            <span class="badge">Donate</span>
+            <span class="badge">Broom-swept</span>
+          </div>
+        </div>
+        <div>
+          <p class="lede">When a lease ends, we clear the space. Disassembly, hauling, donation routing, and a broom-swept handoff ready for the landlord walk.</p>
+          <ul>
+            <li>Inventory assessment and liquidation plan</li>
+            <li>Donation to nonprofits and schools (with receipts)</li>
+            <li>Certified recycling for e-waste and metal</li>
+            <li>Broom-swept delivery ready for landlord inspection</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Capabilities -->
+  <section class="capabilities">
+    <div class="container">
+      <div style="max-width: 720px;">
+        <span class="eyebrow" style="color:#9a9a9a;"><span style="background:#9a9a9a; width:24px; height:1px; display:inline-block;"></span>Capabilities</span>
+        <h2 style="margin-top:20px; color:#fff;">What we bring to every job.</h2>
+      </div>
+      <div class="grid">
+        <div class="cap"><h4>Licensed &amp; insured</h4><p>$5M general liability. Certificates sent same-day to your building.</p></div>
+        <div class="cap"><h4>Uniformed crews</h4><p>Branded shirts, IDs, and a supervisor on site for every job over four hours.</p></div>
+        <div class="cap"><h4>Right-sized fleet</h4><p>Box trucks, 26-foot straight trucks, and trailers — whatever the job needs.</p></div>
+        <div class="cap"><h4>Protective gear</h4><p>Moving pads, shrink wrap, masonite, floor runners, elevator pads.</p></div>
+        <div class="cap"><h4>Labeled inventory</h4><p>Every item tagged, every room mapped. Nothing arrives in the wrong place.</p></div>
+        <div class="cap"><h4>After-hours work</h4><p>Evenings, weekends, and holidays. Your business keeps running.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-cream" style="border-top: none;">
+    <div class="container" style="text-align:center; max-width: 720px;">
+      <span class="eyebrow" style="justify-content:center;">Next step</span>
+      <h2 style="margin-top:20px;">Start with a walkthrough.</h2>
+      <p style="color: var(--ink-2); font-size: 18px; line-height: 1.6; margin: 20px auto 32px;">
+        Tell us about your space and your timeline. We'll come see it, give you a firm quote, and put a plan on paper.
+      </p>
+      <a href="contact.html" class="btn btn-primary">Request a quote →</a>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/partials.js"></script>
+<script> renderSiteChrome('services'); </script>
+</body>
+</html>
