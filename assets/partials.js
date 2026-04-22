@@ -2,18 +2,21 @@
 // Pass the current page key so the active link is marked.
 window.renderSiteChrome = function(pageKey) {
   const navHTML = `
-    <nav class="nav">
+    <nav class="nav" id="mainNav">
       <div class="nav-inner">
         <a href="index.html" class="logo" aria-label="AGD Installation home">
           <span class="logo-mark">AGD</span>
           <span>AGD Installation</span>
         </a>
+        <button class="nav-toggle" aria-label="Toggle menu" onclick="document.getElementById('mainNav').classList.toggle('open')">
+          <span></span><span></span><span></span>
+        </button>
         <div class="nav-links">
           <a href="index.html" class="${pageKey==='home'?'active':''}">Home</a>
           <a href="services.html" class="${pageKey==='services'?'active':''}">Services</a>
           <a href="projects.html" class="${pageKey==='projects'?'active':''}">Projects</a>
           <a href="about.html" class="${pageKey==='about'?'active':''}">About</a>
-          <a href="contact.html" class="btn btn-primary" style="color:#ffffff !important; background:#0A0A0A;"><span style="color:#ffffff;">Request a Quote</span></a>
+          <a href="contact.html" class="btn btn-primary" style="color:#ffffff; background:#0A0A0A;"><span style="color:#ffffff;">Request a Quote</span></a>
         </div>
       </div>
     </nav>
