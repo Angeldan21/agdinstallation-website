@@ -204,7 +204,14 @@
 
       <!-- Form -->
       <div>
-        <form class="quote" id="quoteForm" novalidate>
+        <form class="quote" id="quoteForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+          <!-- Web3Forms configuration -->
+          <input type="hidden" name="access_key" value="a7dd3b3a-5300-4824-b50a-11b3226d8d4d">
+          <input type="hidden" name="subject" value="New quote request — AGD Installation">
+          <input type="hidden" name="from_name" value="AGD Installation Website">
+          <!-- Honeypot: bots fill this, humans don't see it -->
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
           <div class="field row2">
             <div>
               <label for="name">Your name</label>
@@ -313,12 +320,16 @@
     if (btn) { btn.style.borderColor = 'rgb(38, 38, 38)'; btn.style.color = 'rgb(255, 255, 255)'; }
   })();
 
-  // Form validation + mock submit
+  // Form validation + Web3Forms submit
   const form = document.getElementById('quoteForm');
   const successMsg = document.getElementById('successMsg');
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const submitBtnLabel = submitBtn.textContent;
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    // Client-side validation
     let ok = true;
     const name = document.getElementById('name');
     const email = document.getElementById('email');
@@ -331,9 +342,29 @@
       else wrap.classList.remove('err');
     });
     if (!ok) return;
-    form.style.display = 'none';
-    successMsg.classList.add('show');
-    window.scrollTo({top: form.offsetTop - 120, behavior: 'smooth'});
+
+    // POST to Web3Forms
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.success) {
+        form.style.display = 'none';
+        successMsg.classList.add('show');
+        window.scrollTo({ top: form.offsetTop - 120, behavior: 'smooth' });
+      } else {
+        throw new Error(data.message || 'Submission failed');
+      }
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = submitBtnLabel;
+      alert("Sorry — we couldn't send your request. Please call (510) 555-0199 or email jesus.b@agdinstallation.com directly.");
+    }
   });
 
   // Clear errors on input
