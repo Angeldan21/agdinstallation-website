@@ -59,7 +59,7 @@ window.renderSiteChrome = function(pageKey) {
           <div>
             <h4>Get in touch</h4>
             <a href="tel:+15105550199">(510) 555-0199</a>
-            <a href="mailto:hello@agdinstallation.com">hello@agdinstallation.com</a>
+            <a href="mailto:jesus.b@agdinstallation.com">jesus.b@agdinstallation.com</a>
             <a href="#" style="pointer-events:none;">Hayward, CA</a>
             <a href="contact.html" style="color:#fff; margin-top:12px; font-weight:600;">Request a quote →</a>
           </div>
