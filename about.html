@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About — AGD Installation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  .page-hero {
+    padding: 80px 0 48px;
+  }
+  .page-hero h1 { font-size: clamp(48px, 8vw, 104px); max-width: 1100px; }
+  .page-hero .lede {
+    margin-top: 32px;
+    font-size: 22px;
+    line-height: 1.5;
+    max-width: 760px;
+    color: var(--ink-2);
+  }
+
+  .about-split {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 64px;
+    padding: 80px 0;
+    border-top: 1px solid var(--line);
+    align-items: start;
+  }
+  .about-split .photo { aspect-ratio: 4/5; }
+  .about-split .body p {
+    color: var(--ink-2);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+  @media (max-width: 900px) { .about-split { grid-template-columns: 1fr; } }
+
+  .values {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 56px;
+  }
+  .values .val {
+    padding: 28px 24px 28px 0;
+    border-top: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+  }
+  .values .val:last-child { border-right: none; padding-right: 0; }
+  .values .val .n {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+  }
+  .values .val h3 { font-size: 22px; margin-bottom: 12px; }
+  .values .val p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  @media (max-width: 900px) {
+    .values { grid-template-columns: 1fr 1fr; }
+    .values .val:nth-child(2n) { border-right: none; padding-right: 0; }
+  }
+
+  .area {
+    background: var(--ink);
+    color: #fff;
+    padding: 100px 0;
+  }
+  .area .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .area h2 { color: #fff; }
+  .area .cities {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px 24px;
+  }
+  .area .cities div {
+    padding: 12px 0;
+    border-bottom: 1px solid #2a2a2a;
+    font-size: 14px;
+    color: #d0d0d0;
+  }
+  .area .cities div.base {
+    color: var(--safety);
+    font-weight: 600;
+  }
+  @media (max-width: 900px) {
+    .area .row { grid-template-columns: 1fr; }
+    .area .cities { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* Team */
+  .team {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 48px;
+  }
+  .team .person .photo { aspect-ratio: 4/5; margin-bottom: 16px; }
+  .team .person h4 { font-size: 18px; font-family: 'Sora', sans-serif; }
+  .team .person p { font-size: 13px; color: var(--muted); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 4px; }
+  @media (max-width: 900px) { .team { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">About AGD Installation</span>
+      <h1 style="margin-top:24px;">A Hayward crew that treats your office like their own.</h1>
+      <p class="lede">AGD Installation is a commercial furniture moving and installation company based in Hayward, California. We serve businesses across the Bay Area and the rest of the state — from single-room installs to multi-floor relocations.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container about-split">
+      <div class="photo"><div class="photo-label">Team / owner · photo</div></div>
+      <div class="body">
+        <span class="eyebrow">Our story</span>
+        <h2 style="margin-top:20px; font-size: clamp(32px, 4vw, 44px);">Built by movers, for businesses.</h2>
+        <p style="margin-top: 28px;">
+          AGD started as a small crew doing weekend jobs for local businesses that couldn't find a mover who'd show up on time. Twelve years later, we still pick up the phone, still do walkthroughs, and still have the same supervisors running the jobs.
+        </p>
+        <p>
+          We're not a van line. We don't do residential. Every person on our crew moves offices for a living — that means faster installs, fewer surprises, and a finish that holds up on Monday morning.
+        </p>
+        <p>
+          We're licensed, insured, and honest about what a job will take. If your timeline is tight, we'll tell you. If your quote needs to come down, we'll tell you what we can cut. No sales pressure, no upsells mid-project.
+        </p>
+        <a href="contact.html" class="btn btn-outline" style="margin-top: 16px;">Get in touch →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section" style="border-top: 1px solid var(--line);">
+    <div class="container">
+      <div style="max-width: 720px;">
+        <span class="eyebrow">How we work</span>
+        <h2 style="margin-top:20px;">Four things we never cut corners on.</h2>
+      </div>
+      <div class="values">
+        <div class="val">
+          <div class="n">01 · Showing up</div>
+          <h3>On time, every time.</h3>
+          <p>Scheduled means scheduled. If something changes, you hear about it from us first — not from the crew waiting in the lobby.</p>
+        </div>
+        <div class="val">
+          <div class="n">02 · Protection</div>
+          <h3>Your space, protected.</h3>
+          <p>Floor runners, elevator pads, corner guards, shrink-wrap. Your walls and floors look the same when we leave as when we arrived.</p>
+        </div>
+        <div class="val">
+          <div class="n">03 · Precision</div>
+          <h3>Planned to the hour.</h3>
+          <p>Move plans that map every room, every piece, every handoff. Nothing shows up on the wrong floor.</p>
+        </div>
+        <div class="val">
+          <div class="n">04 · Finish</div>
+          <h3>Ready for work.</h3>
+          <p>We reset the space — power plugged in, chairs adjusted, monitors up — so your team can sit down and work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="section" style="border-top: none;">
+    <div class="container">
+      <div style="display:flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px; margin-bottom: 32px;">
+        <div>
+          <span class="eyebrow">The crew</span>
+          <h2 style="margin-top:20px;">People who do the work.</h2>
+        </div>
+        <p style="max-width: 420px; color: var(--muted);">Small, tenured team. Full-time, W-2, uniformed — no day-labor hires.</p>
+      </div>
+      <div class="team">
+        <div class="person">
+          <div class="photo square"><div class="photo-label">Portrait · photo</div></div>
+          <h4>[Owner name]</h4>
+          <p>Founder / Lead estimator</p>
+        </div>
+        <div class="person">
+          <div class="photo square"><div class="photo-label">Portrait · photo</div></div>
+          <h4>[Operations lead]</h4>
+          <p>Operations supervisor</p>
+        </div>
+        <div class="person">
+          <div class="photo square"><div class="photo-label">Portrait · photo</div></div>
+          <h4>[Install lead]</h4>
+          <p>Install supervisor</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service area -->
+  <section class="area">
+    <div class="container">
+      <div class="row">
+        <div>
+          <span class="eyebrow" style="color:#9a9a9a;"><span style="background:#9a9a9a; width:24px; height:1px; display:inline-block;"></span>Service area</span>
+          <h2 style="margin-top:20px;">Based in Hayward.<br/>Serving California.</h2>
+          <p style="color:#9a9a9a; margin-top: 24px; line-height: 1.6; max-width: 420px;">
+            Most of our jobs are in the Bay Area, but we travel for the right project. If you're in California and need a commercial move, ask us — we've probably done one nearby.
+          </p>
+          <div style="margin-top: 24px;">
+            <a href="contact.html" class="btn btn-primary" style="background:#fff; color:var(--ink);">Ask about your location →</a>
+          </div>
+        </div>
+        <div class="cities">
+          <div class="base">Hayward (HQ)</div>
+          <div>Oakland</div>
+          <div>San Francisco</div>
+          <div>Berkeley</div>
+          <div>Fremont</div>
+          <div>San Jose</div>
+          <div>Palo Alto</div>
+          <div>Mountain View</div>
+          <div>Redwood City</div>
+          <div>San Mateo</div>
+          <div>Walnut Creek</div>
+          <div>Concord</div>
+          <div>Richmond</div>
+          <div>Sacramento</div>
+          <div>Santa Rosa</div>
+          <div>Los Angeles</div>
+          <div>San Diego</div>
+          <div>+ by request</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-cream" style="border-top: none;">
+    <div class="container" style="text-align:center; max-width: 720px;">
+      <h2>Work with us.</h2>
+      <p style="color: var(--ink-2); font-size: 18px; line-height: 1.6; margin: 20px auto 32px;">
+        Walkthrough first, quote second, job third. That's how we've always done it.
+      </p>
+      <a href="contact.html" class="btn btn-primary">Request a quote →</a>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/partials.js"></script>
+<script> renderSiteChrome('about'); </script>
+</body>
+</html>

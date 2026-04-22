@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AGD Installation — Commercial Moving &amp; Installation · Hayward, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  /* ---- HERO B · Dark bold ---- */
+  .heroB {
+    background: var(--ink);
+    color: #fff;
+    padding: 100px 0 120px;
+    position: relative;
+    overflow: hidden;
+  }
+  .heroB::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(90deg, transparent 0 119px, rgba(255,255,255,0.04) 119px 120px);
+    pointer-events: none;
+  }
+  .heroB .inner { position: relative; z-index: 1; }
+  .heroB h1 { color: #fff; font-size: clamp(64px, 9vw, 140px); line-height: 0.9; }
+  .heroB h1 .accent {
+    background: linear-gradient(to right, var(--accent-2), var(--safety));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .heroB .sub { max-width: 620px; color: #bfbfbf; font-size: 18px; line-height: 1.6; margin-top: 32px; }
+  .heroB .actions { margin-top: 40px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .heroB .actions .btn-primary { background: #fff; color: var(--ink); }
+  .heroB .actions .btn-primary:hover { background: var(--safety); color: var(--ink); }
+  .heroB .actions .btn-outline { color: #fff; border-color: #3a3a3a; }
+  .heroB .actions .btn-outline:hover { background: #fff; color: var(--ink); border-color: #fff; }
+  .heroB .hero-strip {
+    margin-top: 72px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 0;
+    border-top: 1px solid #2a2a2a;
+  }
+  .heroB .hero-strip > div {
+    padding: 24px 24px 0 0;
+    border-right: 1px solid #2a2a2a;
+  }
+  .heroB .hero-strip > div:last-child { border-right: none; }
+  .heroB .hero-strip .num {
+    font-family: 'Sora', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
+  }
+  .heroB .hero-strip .lbl {
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    color: #7a7a7a;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 6px;
+  }
+  @media (max-width: 900px) { .heroB .hero-strip { grid-template-columns: repeat(2,1fr); } }
+
+  /* ---- Services section ---- */
+  .service-card {
+    padding: 32px;
+    border: 1px solid var(--line);
+    background: #fff;
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: all .15s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card:hover {
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+  .service-card .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  .service-card h3 { font-size: 22px; }
+  .service-card p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+  .service-card .arrow {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* ---- Process ---- */
+  .process {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 64px;
+  }
+  .process .step {
+    padding: 24px 24px 24px 0;
+    border-top: 1px solid #2a2a2a;
+    position: relative;
+  }
+  .process .step .step-num {
+    font-family: 'Sora', sans-serif;
+    font-size: 14px;
+    color: var(--safety);
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: 0.05em;
+  }
+  .process .step h3 { color: #fff; font-size: 20px; margin-bottom: 12px; }
+  .process .step p { color: #9a9a9a; font-size: 14px; line-height: 1.6; }
+  @media (max-width: 900px) { .process { grid-template-columns: 1fr 1fr; } }
+
+  /* ---- Logo strip ---- */
+  .logo-strip {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .logo-strip .item {
+    padding: 40px 24px;
+    text-align: center;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #8a8a8a;
+    font-size: 18px;
+    border-right: 1px solid var(--line);
+    transition: color .15s ease;
+  }
+  .logo-strip .item:last-child { border-right: none; }
+  .logo-strip .item:hover { color: var(--ink); }
+  @media (max-width: 900px) { .logo-strip { grid-template-columns: repeat(2, 1fr); } .logo-strip .item:nth-child(2n) { border-right: none; } }
+
+  /* ---- CTA section ---- */
+  .cta-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .cta-block h2 { font-size: clamp(36px, 5vw, 64px); }
+  @media (max-width: 900px) { .cta-block { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<main>
+  <!-- HERO · Dark bold -->
+  <section class="heroB">
+    <div class="container inner">
+      <span class="eyebrow" style="color:#9a9a9a;">
+        <span style="background:#9a9a9a; width:24px; height:1px; display:inline-block;"></span>
+        Commercial moving &amp; installation
+      </span>
+      <h1 style="margin-top:28px;">Built to move<br/><span class="accent">what keeps you working.</span></h1>
+      <p class="sub">Commercial furniture moving, office relocation, and installation for California businesses. Crews that show up, plans that hold, and a finish that's ready for Monday morning.</p>
+      <div class="actions">
+        <a href="contact.html" class="btn btn-primary">Request a quote</a>
+        <a href="services.html" class="btn btn-outline">What we do</a>
+      </div>
+      <div class="hero-strip">
+        <div><div class="num">12+</div><div class="lbl">Years moving offices</div></div>
+        <div><div class="num">500+</div><div class="lbl">Relocations completed</div></div>
+        <div><div class="num">CA</div><div class="lbl">Licensed &amp; insured</div></div>
+        <div><div class="num">24/7</div><div class="lbl">Weekend installs</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trusted by / client logos -->
+  <section style="padding: 60px 0 40px;">
+    <div class="container">
+      <p class="mono" style="text-align:center; margin-bottom: 28px;">Trusted by teams across the Bay Area</p>
+      <div class="logo-strip">
+        <div class="item">NORTHBAY</div>
+        <div class="item">Crestline&amp;Co.</div>
+        <div class="item">PACIFIC/OS</div>
+        <div class="item">Hayward Labs</div>
+        <div class="item">Monolith</div>
+        <div class="item">OAK &amp; IRON</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services overview -->
+  <section class="section" style="border-top: none;">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px; margin-bottom: 56px;">
+        <div style="max-width: 640px;">
+          <span class="eyebrow">What we do</span>
+          <h2 style="margin-top:20px;">Commercial projects, handled end-to-end.</h2>
+        </div>
+        <a href="services.html" class="btn btn-ghost">All services →</a>
+      </div>
+      <div class="grid-3">
+        <div class="service-card">
+          <div class="num">01 / Moving</div>
+          <h3>Commercial furniture moving</h3>
+          <p>Heavy, bulky, or delicate — our crews move desks, conference tables, and shared equipment with pad-wrapped protection and proper gear.</p>
+          <a class="arrow" href="services.html">Learn more →</a>
+        </div>
+        <div class="service-card">
+          <div class="num">02 / Relocation</div>
+          <h3>Office relocation</h3>
+          <p>Full-service moves coordinated around your calendar. We plan, label, pack, move, and reset so your team walks into a working office.</p>
+          <a class="arrow" href="services.html">Learn more →</a>
+        </div>
+        <div class="service-card">
+          <div class="num">03 / Install</div>
+          <h3>Furniture assembly &amp; installation</h3>
+          <p>We read plans, unbox, assemble, level, and finish. Whether it's a single workstation or a full floor, we install it right.</p>
+          <a class="arrow" href="services.html">Learn more →</a>
+        </div>
+        <div class="service-card">
+          <div class="num">04 / Systems</div>
+          <h3>Cubicle &amp; modular systems</h3>
+          <p>Herman Miller, Steelcase, Haworth, Knoll — we install and reconfigure modular systems to spec, on time, with clean finishes.</p>
+          <a class="arrow" href="services.html">Learn more →</a>
+        </div>
+        <div class="service-card">
+          <div class="num">05 / Decom</div>
+          <h3>Decommissioning &amp; liquidation</h3>
+          <p>When a space is done, we clear it out — disassembly, hauling, donation routing, and broom-swept handoff back to the landlord.</p>
+          <a class="arrow" href="services.html">Learn more →</a>
+        </div>
+        <div class="service-card" style="background: var(--ink); color: #fff; border-color: var(--ink);">
+          <div class="num" style="color:#7a7a7a;">Need more?</div>
+          <h3 style="color:#fff;">Tell us about your project.</h3>
+          <p style="color:#9a9a9a;">Receiving, warehousing, staging — if it's commercial, ask us. Most jobs start with a walkthrough.</p>
+          <a class="arrow" href="contact.html" style="color:#fff;">Request a quote →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process / dark -->
+  <section class="section section-dark">
+    <div class="container">
+      <div style="display:grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: start;">
+        <div>
+          <span class="eyebrow" style="color:#9a9a9a;"><span style="background:#9a9a9a; width:24px; height:1px; display:inline-block;"></span>How it works</span>
+          <h2 style="margin-top:20px; color:#fff;">A process built for Monday mornings.</h2>
+          <p style="color:#9a9a9a; margin-top:24px; max-width: 380px;">
+            We plan to the hour, move on nights and weekends, and hand your space back ready to work. No surprises.
+          </p>
+        </div>
+        <div class="process">
+          <div class="step">
+            <div class="step-num">01</div>
+            <h3>Walkthrough</h3>
+            <p>We visit, measure, and scope. You get a written plan and a firm quote.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <h3>Plan</h3>
+            <p>Labeling, routes, elevator holds, COI — we handle the paperwork.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <h3>Execute</h3>
+            <p>Uniformed crews, pad-wrapped goods, and on-site supervisors.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <h3>Finish</h3>
+            <p>Reset, cleanup, and walkthrough. You sign off when it's right.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section style="padding: 40px 0;">
+    <div class="container">
+      <div class="stat-row">
+        <div><div class="num">500+</div><div class="lbl">Offices relocated</div></div>
+        <div><div class="num">12 yrs</div><div class="lbl">In business</div></div>
+        <div><div class="num">98%</div><div class="lbl">On-time delivery</div></div>
+        <div><div class="num">$5M</div><div class="lbl">Liability coverage</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured project -->
+  <section class="section" style="border-top: none; padding-top: 60px;">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px; margin-bottom: 40px;">
+        <div>
+          <span class="eyebrow">Recent work</span>
+          <h2 style="margin-top:20px;">A crew that leaves no trace.</h2>
+        </div>
+        <a href="projects.html" class="btn btn-ghost">All projects →</a>
+      </div>
+      <div class="grid-2">
+        <div>
+          <div class="photo wide"><div class="photo-label">Featured project · 16:9 photo</div></div>
+          <div class="mono" style="margin-top:16px;">Case · 2025</div>
+          <h3 style="margin-top:8px;">42,000 sq ft office move · Oakland</h3>
+          <p style="color:var(--muted); margin-top:12px;">A regional marketing firm moved 180 workstations and 12 conference rooms over a single weekend. Monday open at 9:00 — no missed meetings.</p>
+        </div>
+        <div style="display:grid; grid-template-rows: 1fr 1fr; gap: 16px;">
+          <div class="photo wide"><div class="photo-label">Install · photo</div></div>
+          <div class="photo wide"><div class="photo-label">Cubicles · photo</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-cream" style="border-top: none;">
+    <div class="container">
+      <div class="cta-block">
+        <div>
+          <span class="eyebrow">Get started</span>
+          <h2 style="margin-top: 20px;">Tell us about your move. We'll take it from there.</h2>
+        </div>
+        <div>
+          <p style="color: var(--ink-2); font-size: 18px; line-height: 1.6; margin-bottom: 24px;">
+            Most quotes come back within 24 hours. Walkthroughs are free — we'd rather see the space before we give you a number.
+          </p>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a href="contact.html" class="btn btn-primary">Request a quote</a>
+            <a href="tel:+15105550199" class="btn btn-outline">(510) 555-0199</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/partials.js"></script>
+<script>
+  renderSiteChrome('home');
+  document.documentElement.style.setProperty('--accent', '#0A0A0A');
+  (function(){
+    const btn = document.querySelector('#site-nav .nav-links > .btn');
+    if (btn) btn.style.color = 'rgb(255, 255, 255)';
+  })();
+</script>
+</body>
+</html>

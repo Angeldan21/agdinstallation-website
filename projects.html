@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Projects — AGD Installation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  .page-hero {
+    padding: 80px 0 48px;
+    border-bottom: 1px solid var(--line);
+  }
+  .page-hero .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: end;
+  }
+  .page-hero h1 { font-size: clamp(48px, 7vw, 96px); }
+  .page-hero p { color: var(--muted); font-size: 18px; line-height: 1.6; max-width: 480px; }
+  @media (max-width: 900px) { .page-hero .row { grid-template-columns: 1fr; } }
+
+  .filter-bar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .filter-bar button {
+    padding: 8px 16px;
+    border: 1px solid var(--line);
+    background: #fff;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    color: var(--ink-2);
+    cursor: pointer;
+    transition: all .15s ease;
+  }
+  .filter-bar button.on,
+  .filter-bar button:hover {
+    background: var(--ink);
+    color: #fff;
+    border-color: var(--ink);
+  }
+
+  .proj-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+    padding: 48px 0 80px;
+  }
+  .proj {
+    grid-column: span 6;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    cursor: pointer;
+  }
+  .proj.wide { grid-column: span 12; }
+  .proj.third { grid-column: span 4; }
+  .proj .photo { aspect-ratio: 4/3; transition: transform .3s ease; }
+  .proj.wide .photo { aspect-ratio: 21/9; }
+  .proj:hover .photo { transform: scale(1.01); }
+  .proj .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+  }
+  .proj .mono { font-size: 11px; }
+  .proj h3 {
+    font-size: 22px;
+    line-height: 1.2;
+  }
+  .proj p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  @media (max-width: 900px) {
+    .proj, .proj.wide, .proj.third { grid-column: span 12; }
+  }
+
+  /* Big feature */
+  .feature {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    padding: 80px 0;
+    border-top: 1px solid var(--line);
+    align-items: center;
+  }
+  .feature .photo { aspect-ratio: 4/5; }
+  .feature .meta-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin: 32px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .feature .meta-row > div {
+    padding: 20px 20px 20px 0;
+    border-right: 1px solid var(--line);
+  }
+  .feature .meta-row > div:last-child { border-right: none; }
+  .feature .meta-row .mono { font-size: 11px; margin-bottom: 6px; display:block; }
+  .feature .meta-row strong { font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 600; }
+  @media (max-width: 900px) { .feature { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="row">
+        <div>
+          <span class="eyebrow">Projects</span>
+          <h1 style="margin-top:24px;">Moves that didn't miss a Monday.</h1>
+        </div>
+        <div>
+          <p>A selection of recent commercial jobs across the Bay Area and greater California — from two-person startups to 200-desk relocations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="filter-bar">
+        <button class="on" data-filter="all">All</button>
+        <button data-filter="relocation">Relocation</button>
+        <button data-filter="install">Installation</button>
+        <button data-filter="systems">Cubicle systems</button>
+        <button data-filter="decom">Decommissioning</button>
+      </div>
+
+      <div class="proj-grid" id="projGrid">
+
+        <a class="proj wide" data-cat="relocation">
+          <div class="photo"><div class="photo-label">Featured · 21:9 photo</div></div>
+          <div class="meta">
+            <div>
+              <span class="mono">2025 · Oakland</span>
+              <h3 style="margin-top:6px;">Crestline Marketing — 42,000 sq ft weekend relocation</h3>
+            </div>
+            <span class="mono">Relocation</span>
+          </div>
+          <p>180 workstations, 12 conference rooms, one weekend. Team walked in Monday at 9:00 to a fully reset floor, IT online.</p>
+        </a>
+
+        <a class="proj" data-cat="install">
+          <div class="photo"><div class="photo-label">Install · 4:3 photo</div></div>
+          <div class="meta">
+            <div>
+              <span class="mono">2025 · San Francisco</span>
+              <h3 style="margin-top:6px;">Pacific/OS — 90 workstation install</h3>
+            </div>
+            <span class="mono">Install</span>
+          </div>
+          <p>New Steelcase benching across two floors, including height-adjustable desks and monitor arms.</p>
+        </a>
+
+        <a class="proj" data-cat="systems">
+          <div class="photo"><div class="photo-label">Cubicles · photo</div></div>
+          <div class="meta">
+            <div>
+              <span class="mono">2024 · Fremont</span>
+              <h3 style="margin-top:6px;">Monolith Labs — Ethospace reconfiguration</h3>
+            </div>
+            <span class="mono">Systems</span>
+          </div>
+          <p>Reconfigured 60 Herman Miller Ethospace stations into team pods across one floor.</p>
+        </a>
+
+        <a class="proj third" data-cat="decom">
+          <div class="photo"><div class="photo-label">Decom · photo</div></div>
+          <div class="meta">
+            <div>
+              <span class="mono">2025 · Berkeley</span>
+              <h3 style="margin-top:6px;">Full-floor decommissioning</h3>
+            </div>
+            <span class="mono">Decom</span>
+          </div>
+          <p>Ten-day clear-out with nonprofit donation routing and broom-swept landlord handoff.</p>
+        </a>
+
+        <a class="proj third" data-cat="relocation">
+          <div class="photo"><div class="photo-label">Move · photo</div></div>
+          <div class="meta">
+            <div>
+              <span class="mono">2024 · San Jose</span>
+              <h3 style="margin-top:6px;">NorthBay HQ move</h3>
+            </div>
+            <span class="mono">Relocation</span>
+          </div>
+          <p>Two-building consolidation, 120 people, three phased weekends.</p>
+        </a>
+
+        <a class="proj third" data-cat="install">
+          <div class="photo"><div class="photo-label">Install · photo</div></div>
+          <div class="meta">
+            <div>
+              <span class="mono">2024 · Hayward</span>
+              <h3 style="margin-top:6px;">Hayward Labs fit-out</h3>
+            </div>
+            <span class="mono">Install</span>
+          </div>
+          <p>Brand-new lab fit-out with benching, lounge, and executive offices from pallets up.</p>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature case study -->
+  <section style="background: var(--cream);">
+    <div class="container feature">
+      <div class="photo"><div class="photo-label">Case study · 4:5 photo</div></div>
+      <div>
+        <span class="eyebrow">Case study</span>
+        <h2 style="margin-top:20px; font-size: clamp(32px, 4vw, 48px);">"They moved our office over a weekend and nobody on my team noticed."</h2>
+        <div class="meta-row">
+          <div><span class="mono">Client</span><strong>Crestline &amp; Co.</strong></div>
+          <div><span class="mono">Scope</span><strong>42,000 sq ft</strong></div>
+          <div><span class="mono">Duration</span><strong>48 hours</strong></div>
+        </div>
+        <p style="color: var(--ink-2); line-height: 1.6; margin-bottom: 20px;">
+          180 workstations, 12 conference rooms, a full kitchen and lounge — all moved, installed, and reset across a single weekend. The AGD team labeled every item, mapped every seat, and handled the building COI and elevator coordination. Monday morning, 9:00, everyone at their new desk with their monitors plugged in.
+        </p>
+        <a href="contact.html" class="btn btn-outline">Start yours →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="border-top: none;">
+    <div class="container" style="text-align:center; max-width: 720px;">
+      <h2>Have a project in mind?</h2>
+      <p style="color: var(--muted); font-size: 18px; line-height: 1.6; margin: 20px auto 32px;">
+        From a single install to a full-building move, we'd love to take a look.
+      </p>
+      <a href="contact.html" class="btn btn-primary">Request a quote →</a>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/partials.js"></script>
+<script>
+  renderSiteChrome('projects');
+
+  // Filter bar
+  document.querySelectorAll('.filter-bar button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-bar button').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('.proj').forEach(p => {
+        p.style.display = (f === 'all' || p.dataset.cat === f) ? '' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>

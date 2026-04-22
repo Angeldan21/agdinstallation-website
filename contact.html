@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Request a Quote — AGD Installation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  .contact-wrap {
+    padding: 64px 0 120px;
+  }
+  .contact-wrap .inner {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .contact-wrap h1 { font-size: clamp(44px, 6vw, 72px); }
+  .contact-wrap .lede {
+    margin-top: 24px;
+    color: var(--ink-2);
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  @media (max-width: 1000px) { .contact-wrap .inner { grid-template-columns: 1fr; gap: 48px; } }
+
+  .info-card {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-top: 32px;
+  }
+  .info-card .row {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line-2);
+    font-size: 14px;
+  }
+  .info-card .row:last-child { border-bottom: none; }
+  .info-card .row .lbl { color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .info-card .row .val { font-weight: 600; color: var(--ink); text-align: right; }
+
+  /* Form */
+  form.quote {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 40px;
+  }
+  .field {
+    margin-bottom: 20px;
+  }
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    background: #fff;
+    color: var(--ink);
+    transition: border-color .15s ease;
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--ink);
+  }
+  .field textarea { min-height: 120px; resize: vertical; font-family: inherit; }
+  .field.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 600px) { .field.row2 { grid-template-columns: 1fr; } }
+
+  .checks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .checks label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--ink-2);
+    font-weight: 500;
+    transition: all .15s ease;
+    margin: 0;
+  }
+  .checks input { accent-color: var(--ink); width: 16px; height: 16px; }
+  .checks label:has(input:checked) {
+    border-color: var(--ink);
+    background: #f6f3ee;
+  }
+  @media (max-width: 600px) { .checks { grid-template-columns: 1fr; } }
+
+  .submit-row {
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .submit-row .note { font-size: 12px; color: var(--muted); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; text-transform: uppercase; }
+
+  /* Success state */
+  .success {
+    display: none;
+    padding: 48px;
+    text-align: center;
+    background: var(--ink);
+    color: #fff;
+    border-radius: var(--radius);
+  }
+  .success.show { display: block; }
+  .success .check {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--safety);
+    color: var(--ink);
+    display: grid; place-items: center;
+    margin: 0 auto 20px;
+    font-weight: 700;
+    font-size: 20px;
+  }
+  .success h3 { color: #fff; font-size: 24px; margin-bottom: 12px; }
+  .success p { color: #bfbfbf; max-width: 420px; margin: 0 auto; line-height: 1.6; }
+
+  /* Error state */
+  .field.err input,
+  .field.err select,
+  .field.err textarea {
+    border-color: #b33a3a;
+  }
+  .field .err-msg {
+    display: none;
+    color: #b33a3a;
+    font-size: 12px;
+    margin-top: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+  .field.err .err-msg { display: block; }
+
+  /* Hours row */
+  .hours-list { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; font-size: 14px; color: var(--ink-2); }
+  .hours-list div { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px dashed var(--line-2); }
+</style>
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<main class="contact-wrap">
+  <div class="container">
+    <div class="inner">
+
+      <div>
+        <span class="eyebrow">Get in touch</span>
+        <h1 style="margin-top:24px;">Tell us about your project.</h1>
+        <p class="lede">Fill out the form and we'll get back within 24 hours. For urgent jobs, call us — we pick up.</p>
+
+        <div class="info-card">
+          <div class="row"><span class="lbl">Phone</span><span class="val">(510) 555-0199</span></div>
+          <div class="row"><span class="lbl">Email</span><span class="val">hello@agdinstallation.com</span></div>
+          <div class="row"><span class="lbl">Based</span><span class="val">Hayward, CA</span></div>
+          <div class="row"><span class="lbl">Coverage</span><span class="val">California + beyond</span></div>
+          <div class="row"><span class="lbl">Response</span><span class="val">&lt; 24 hours</span></div>
+        </div>
+
+        <div style="margin-top:32px;">
+          <span class="mono">Office hours</span>
+          <div class="hours-list">
+            <div><span>Monday – Friday</span><span>7:00 AM — 6:00 PM</span></div>
+            <div><span>Saturday</span><span>By appointment</span></div>
+            <div><span>Sunday</span><span>Closed</span></div>
+            <div><span>After-hours moves</span><span style="color:var(--accent); font-weight:600;">Available</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div>
+        <form class="quote" id="quoteForm" novalidate>
+          <div class="field row2">
+            <div>
+              <label for="name">Your name</label>
+              <input type="text" id="name" name="name" required placeholder="Jane Doe">
+              <div class="err-msg">Please enter your name.</div>
+            </div>
+            <div>
+              <label for="company">Company</label>
+              <input type="text" id="company" name="company" placeholder="Acme Inc.">
+            </div>
+          </div>
+
+          <div class="field row2">
+            <div>
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="jane@acme.com">
+              <div class="err-msg">Please enter a valid email.</div>
+            </div>
+            <div>
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555">
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Services you need</label>
+            <div class="checks">
+              <label><input type="checkbox" name="svc" value="moving"> Commercial furniture moving</label>
+              <label><input type="checkbox" name="svc" value="relocation"> Office relocation</label>
+              <label><input type="checkbox" name="svc" value="install"> Furniture assembly / install</label>
+              <label><input type="checkbox" name="svc" value="systems"> Cubicle / modular systems</label>
+              <label><input type="checkbox" name="svc" value="decom"> Decommissioning / liquidation</label>
+              <label><input type="checkbox" name="svc" value="other"> Something else</label>
+            </div>
+          </div>
+
+          <div class="field row2">
+            <div>
+              <label for="location">Project location</label>
+              <input type="text" id="location" name="location" placeholder="Oakland, CA">
+            </div>
+            <div>
+              <label for="timeline">Timeline</label>
+              <select id="timeline" name="timeline">
+                <option>ASAP (within 2 weeks)</option>
+                <option selected>Within the next month</option>
+                <option>1–3 months out</option>
+                <option>Flexible</option>
+                <option>Just exploring</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field row2">
+            <div>
+              <label for="size">Approx. size</label>
+              <select id="size" name="size">
+                <option>Under 5,000 sq ft</option>
+                <option selected>5,000 – 15,000 sq ft</option>
+                <option>15,000 – 40,000 sq ft</option>
+                <option>40,000+ sq ft</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div>
+              <label for="budget">Budget (optional)</label>
+              <select id="budget" name="budget">
+                <option>Not sure yet</option>
+                <option>Under $5,000</option>
+                <option>$5,000 – $15,000</option>
+                <option>$15,000 – $50,000</option>
+                <option>$50,000+</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message">Tell us about the project</label>
+            <textarea id="message" name="message" placeholder="What needs to move, install, or be cleared — and when?"></textarea>
+          </div>
+
+          <div class="submit-row">
+            <span class="note">We reply within 24 hours</span>
+            <button type="submit" class="btn btn-primary">Send request →</button>
+          </div>
+        </form>
+
+        <div class="success" id="successMsg">
+          <div class="check">✓</div>
+          <h3>Thanks — we've got it.</h3>
+          <p>We'll review the details and get back within 24 hours, usually much sooner. For urgent work, call (510) 555-0199.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/partials.js"></script>
+<script>
+  renderSiteChrome('contact');
+  (function(){
+    const btn = document.querySelector('#site-nav .nav-links > .btn');
+    if (btn) { btn.style.borderColor = 'rgb(38, 38, 38)'; btn.style.color = 'rgb(255, 255, 255)'; }
+  })();
+
+  // Form validation + mock submit
+  const form = document.getElementById('quoteForm');
+  const successMsg = document.getElementById('successMsg');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let ok = true;
+    const name = document.getElementById('name');
+    const email = document.getElementById('email');
+    [name, email].forEach(input => {
+      let wrap = input.parentElement;
+      const val = input.value.trim();
+      const isEmail = input.type === 'email';
+      const valid = val && (!isEmail || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val));
+      if (!valid) { wrap.classList.add('err'); ok = false; }
+      else wrap.classList.remove('err');
+    });
+    if (!ok) return;
+    form.style.display = 'none';
+    successMsg.classList.add('show');
+    window.scrollTo({top: form.offsetTop - 120, behavior: 'smooth'});
+  });
+
+  // Clear errors on input
+  ['name','email'].forEach(id => {
+    document.getElementById(id).addEventListener('input', (e) => {
+      e.target.parentElement.classList.remove('err');
+    });
+  });
+</script>
+</body>
+</html>
