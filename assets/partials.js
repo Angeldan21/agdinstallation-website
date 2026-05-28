@@ -65,7 +65,7 @@ window.renderSiteChrome = function(pageKey) {
           </div>
         </div>
         <div class="foot-bottom">
-          <div>© 2026 AGD Installation</div>
+          <div>© 2025 AGD Installation</div>
           <div>Hayward, CA · Serving California</div>
         </div>
       </div>
