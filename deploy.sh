@@ -24,13 +24,15 @@ if [ ! -d node_modules ] || [ package-lock.json -nt node_modules/.installed ]; t
   touch node_modules/.installed
 fi
 
-# Build to a temp dir, then swap so the live site is never partially written.
+# Build to a temp dir, then sync its contents INTO the live _site in place.
+# IMPORTANT: do NOT `mv` the _site directory — the nginx container bind-mounts
+# its inode, so replacing the directory would leave the container serving a
+# stale/deleted inode. rsync updates files within the existing dir instead.
 rm -rf _site.tmp
 npx @11ty/eleventy --output=_site.tmp --quiet
-rm -rf _site.old
-[ -d _site ] && mv _site _site.old || true
-mv _site.tmp _site
-rm -rf _site.old
+mkdir -p _site
+rsync -a --delete _site.tmp/ _site/
+rm -rf _site.tmp
 
 # Nudge nginx to drop any cached file handles (no-op if container is absent).
 docker exec agd-site nginx -s reload 2>/dev/null || true
