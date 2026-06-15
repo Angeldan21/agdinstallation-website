@@ -1,13 +1,11 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Projects — AGD Installation</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css">
+---
+title: "Projects — AGD Installation"
+pageKey: projects
+permalink: "projects.html"
+---
+{% extends "base.njk" %}
+
+{% block style %}
 <style>
   .page-hero {
     padding: 80px 0 48px;
@@ -64,9 +62,10 @@
   }
   .proj.wide { grid-column: span 12; }
   .proj.third { grid-column: span 4; }
-  .proj .photo { aspect-ratio: 4/3; transition: transform .3s ease; }
+  .proj .photo { aspect-ratio: 4/3; transition: transform .3s ease; overflow: hidden; }
   .proj.wide .photo { aspect-ratio: 21/9; }
   .proj:hover .photo { transform: scale(1.01); }
+  .proj .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .proj .meta {
     display: flex;
     justify-content: space-between;
@@ -114,11 +113,9 @@
   .feature .meta-row strong { font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 600; }
   @media (max-width: 900px) { .feature { grid-template-columns: 1fr; } }
 </style>
-</head>
-<body>
+{% endblock %}
 
-<div id="site-nav"></div>
-
+{% block body %}
 <main>
   <section class="page-hero">
     <div class="container">
@@ -145,79 +142,21 @@
       </div>
 
       <div class="proj-grid" id="projGrid">
-
-        <a class="proj wide" data-cat="relocation">
-          <div class="photo"><div class="photo-label">Featured · 21:9 photo</div></div>
+        {% for p in projects.items %}
+        <a class="proj{% if p.size == 'wide' %} wide{% elif p.size == 'third' %} third{% endif %}" data-cat="{{ p.category }}">
+          <div class="photo">
+            {% if p.image %}<img src="{{ p.image }}" alt="{{ p.title }}">{% else %}<div class="photo-label">{{ p.categoryLabel }} · photo</div>{% endif %}
+          </div>
           <div class="meta">
             <div>
-              <span class="mono">2025 · Oakland</span>
-              <h3 style="margin-top:6px;">Crestline Marketing — 42,000 sq ft weekend relocation</h3>
+              <span class="mono">{{ p.year }} · {{ p.city }}</span>
+              <h3 style="margin-top:6px;">{{ p.title }}</h3>
             </div>
-            <span class="mono">Relocation</span>
+            <span class="mono">{{ p.categoryLabel }}</span>
           </div>
-          <p>180 workstations, 12 conference rooms, one weekend. Team walked in Monday at 9:00 to a fully reset floor, IT online.</p>
+          <p>{{ p.description }}</p>
         </a>
-
-        <a class="proj" data-cat="install">
-          <div class="photo"><div class="photo-label">Install · 4:3 photo</div></div>
-          <div class="meta">
-            <div>
-              <span class="mono">2025 · San Francisco</span>
-              <h3 style="margin-top:6px;">Pacific/OS — 90 workstation install</h3>
-            </div>
-            <span class="mono">Install</span>
-          </div>
-          <p>New Steelcase benching across two floors, including height-adjustable desks and monitor arms.</p>
-        </a>
-
-        <a class="proj" data-cat="systems">
-          <div class="photo"><div class="photo-label">Cubicles · photo</div></div>
-          <div class="meta">
-            <div>
-              <span class="mono">2024 · Fremont</span>
-              <h3 style="margin-top:6px;">Monolith Labs — Ethospace reconfiguration</h3>
-            </div>
-            <span class="mono">Systems</span>
-          </div>
-          <p>Reconfigured 60 Herman Miller Ethospace stations into team pods across one floor.</p>
-        </a>
-
-        <a class="proj third" data-cat="decom">
-          <div class="photo"><div class="photo-label">Decom · photo</div></div>
-          <div class="meta">
-            <div>
-              <span class="mono">2025 · Berkeley</span>
-              <h3 style="margin-top:6px;">Full-floor decommissioning</h3>
-            </div>
-            <span class="mono">Decom</span>
-          </div>
-          <p>Ten-day clear-out with nonprofit donation routing and broom-swept landlord handoff.</p>
-        </a>
-
-        <a class="proj third" data-cat="relocation">
-          <div class="photo"><div class="photo-label">Move · photo</div></div>
-          <div class="meta">
-            <div>
-              <span class="mono">2024 · San Jose</span>
-              <h3 style="margin-top:6px;">NorthBay HQ move</h3>
-            </div>
-            <span class="mono">Relocation</span>
-          </div>
-          <p>Two-building consolidation, 120 people, three phased weekends.</p>
-        </a>
-
-        <a class="proj third" data-cat="install">
-          <div class="photo"><div class="photo-label">Install · photo</div></div>
-          <div class="meta">
-            <div>
-              <span class="mono">2024 · Hayward</span>
-              <h3 style="margin-top:6px;">Hayward Labs fit-out</h3>
-            </div>
-            <span class="mono">Install</span>
-          </div>
-          <p>Brand-new lab fit-out with benching, lounge, and executive offices from pallets up.</p>
-        </a>
-
+        {% endfor %}
       </div>
     </div>
   </section>
@@ -253,13 +192,10 @@
     </div>
   </section>
 </main>
+{% endblock %}
 
-<div id="site-footer"></div>
-
-<script src="assets/partials.js"></script>
+{% block scripts %}
 <script>
-  renderSiteChrome('projects');
-
   // Filter bar
   document.querySelectorAll('.filter-bar button').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -272,5 +208,4 @@
     });
   });
 </script>
-</body>
-</html>
+{% endblock %}

@@ -1,13 +1,11 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>AGD Installation — Commercial Moving &amp; Installation · Hayward, CA</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css">
+---
+title: "AGD Installation — Commercial Moving & Installation · Hayward, CA"
+pageKey: home
+permalink: "index.html"
+---
+{% extends "base.njk" %}
+
+{% block style %}
 <style>
   /* ---- HERO B · Dark bold ---- */
   .heroB {
@@ -159,30 +157,27 @@
   .cta-block h2 { font-size: clamp(36px, 5vw, 64px); }
   @media (max-width: 900px) { .cta-block { grid-template-columns: 1fr; } }
 </style>
-</head>
-<body>
+{% endblock %}
 
-<div id="site-nav"></div>
-
+{% block body %}
 <main>
   <!-- HERO · Dark bold -->
   <section class="heroB">
     <div class="container inner">
       <span class="eyebrow" style="color:#9a9a9a;">
         <span style="background:#9a9a9a; width:24px; height:1px; display:inline-block;"></span>
-        Commercial moving &amp; installation
+        {{ site.hero.eyebrow }}
       </span>
-      <h1 style="margin-top:28px;">Built to move<br/><span class="accent">what keeps you working.</span></h1>
-      <p class="sub">Commercial furniture moving, office relocation, and installation for California businesses. Crews that show up, plans that hold, and a finish that's ready for Monday morning.</p>
+      <h1 style="margin-top:28px;">{{ site.hero.headline }}<br/><span class="accent">{{ site.hero.headlineAccent }}</span></h1>
+      <p class="sub">{{ site.hero.sub }}</p>
       <div class="actions">
-        <a href="contact.html" class="btn btn-primary">Request a quote</a>
-        <a href="services.html" class="btn btn-outline">What we do</a>
+        <a href="contact.html" class="btn btn-primary">{{ site.hero.ctaPrimary }}</a>
+        <a href="services.html" class="btn btn-outline">{{ site.hero.ctaSecondary }}</a>
       </div>
       <div class="hero-strip">
-        <div><div class="num">12+</div><div class="lbl">Years moving offices</div></div>
-        <div><div class="num">500+</div><div class="lbl">Relocations completed</div></div>
-        <div><div class="num">CA</div><div class="lbl">Licensed &amp; insured</div></div>
-        <div><div class="num">24/7</div><div class="lbl">Weekend installs</div></div>
+        {% for st in site.heroStats %}
+        <div><div class="num">{{ st.num }}</div><div class="lbl">{{ st.label }}</div></div>
+        {% endfor %}
       </div>
     </div>
   </section>
@@ -213,36 +208,14 @@
         <a href="services.html" class="btn btn-ghost">All services →</a>
       </div>
       <div class="grid-3">
+        {% for s in services.items %}
         <div class="service-card">
-          <div class="num">01 / Moving</div>
-          <h3>Commercial furniture moving</h3>
-          <p>Heavy, bulky, or delicate — our crews move desks, conference tables, and shared equipment with pad-wrapped protection and proper gear.</p>
+          <div class="num">{{ s.num }} / {{ s.slug }}</div>
+          <h3>{{ s.title }}</h3>
+          <p>{{ s.shortDesc }}</p>
           <a class="arrow" href="services.html">Learn more →</a>
         </div>
-        <div class="service-card">
-          <div class="num">02 / Relocation</div>
-          <h3>Office relocation</h3>
-          <p>Full-service moves coordinated around your calendar. We plan, label, pack, move, and reset so your team walks into a working office.</p>
-          <a class="arrow" href="services.html">Learn more →</a>
-        </div>
-        <div class="service-card">
-          <div class="num">03 / Install</div>
-          <h3>Furniture assembly &amp; installation</h3>
-          <p>We read plans, unbox, assemble, level, and finish. Whether it's a single workstation or a full floor, we install it right.</p>
-          <a class="arrow" href="services.html">Learn more →</a>
-        </div>
-        <div class="service-card">
-          <div class="num">04 / Systems</div>
-          <h3>Cubicle &amp; modular systems</h3>
-          <p>Herman Miller, Steelcase, Haworth, Knoll — we install and reconfigure modular systems to spec, on time, with clean finishes.</p>
-          <a class="arrow" href="services.html">Learn more →</a>
-        </div>
-        <div class="service-card">
-          <div class="num">05 / Decom</div>
-          <h3>Decommissioning &amp; liquidation</h3>
-          <p>When a space is done, we clear it out — disassembly, hauling, donation routing, and broom-swept handoff back to the landlord.</p>
-          <a class="arrow" href="services.html">Learn more →</a>
-        </div>
+        {% endfor %}
         <div class="service-card" style="background: var(--ink); color: #fff; border-color: var(--ink);">
           <div class="num" style="color:#7a7a7a;">Need more?</div>
           <h3 style="color:#fff;">Tell us about your project.</h3>
@@ -294,10 +267,9 @@
   <section style="padding: 40px 0;">
     <div class="container">
       <div class="stat-row">
-        <div><div class="num">500+</div><div class="lbl">Offices relocated</div></div>
-        <div><div class="num">12 yrs</div><div class="lbl">In business</div></div>
-        <div><div class="num">98%</div><div class="lbl">On-time delivery</div></div>
-        <div><div class="num">$5M</div><div class="lbl">Liability coverage</div></div>
+        {% for st in site.statsRow %}
+        <div><div class="num">{{ st.num }}</div><div class="lbl">{{ st.label }}</div></div>
+        {% endfor %}
       </div>
     </div>
   </section>
@@ -340,25 +312,18 @@
             Most quotes come back within 24 hours. Walkthroughs are free — we'd rather see the space before we give you a number.
           </p>
           <div style="display:flex; gap:12px; flex-wrap:wrap;">
-            <a href="contact.html" class="btn btn-primary">Request a quote</a>
-            <a href="tel:+15105550199" class="btn btn-outline">(510) 555-0199</a>
+            <a href="contact.html" class="btn btn-primary">{{ site.hero.ctaPrimary }}</a>
+            <a href="tel:{{ site.phoneHref }}" class="btn btn-outline">{{ site.phone }}</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 </main>
+{% endblock %}
 
-<div id="site-footer"></div>
-
-<script src="assets/partials.js"></script>
+{% block scripts %}
 <script>
-  renderSiteChrome('home');
   document.documentElement.style.setProperty('--accent', '#0A0A0A');
-  (function(){
-    const btn = document.querySelector('#site-nav .nav-links > .btn');
-    if (btn) btn.style.color = 'rgb(255, 255, 255)';
-  })();
 </script>
-</body>
-</html>
+{% endblock %}

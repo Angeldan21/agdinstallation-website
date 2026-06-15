@@ -1,0 +1,74 @@
+{
+  "items": [
+    {
+      "num": "01",
+      "slug": "Moving",
+      "title": "Commercial furniture moving",
+      "shortDesc": "Heavy, bulky, or delicate — our crews move desks, conference tables, and shared equipment with pad-wrapped protection and proper gear.",
+      "tags": ["Desks", "Conference tables", "Lounge & lobby"],
+      "lede": "The core of what we do. Pad-wrapped, route-planned, and handled by crews who move offices for a living — not a side gig.",
+      "bullets": [
+        "Pad-wrap and shrink-wrap protection on every piece",
+        "Elevator pads, floor runners, and wall protection on site",
+        "Inventory tagging and room-by-room placement",
+        "Nights, weekends, and after-hours scheduling"
+      ]
+    },
+    {
+      "num": "02",
+      "slug": "Relocation",
+      "title": "Office relocation",
+      "shortDesc": "Full-service moves coordinated around your calendar. We plan, label, pack, move, and reset so your team walks into a working office.",
+      "tags": ["End-to-end", "Multi-floor", "Multi-site"],
+      "lede": "A single point of contact for the whole move — from the first walkthrough to the Monday-morning restart.",
+      "bullets": [
+        "Move plan, labeling system, and phased schedule",
+        "Certificate of Insurance and building coordination",
+        "IT equipment handling with disconnect / reconnect support",
+        "Reset to spec: everything plugged in and working"
+      ]
+    },
+    {
+      "num": "03",
+      "slug": "Install",
+      "title": "Furniture assembly & installation",
+      "shortDesc": "We read plans, unbox, assemble, level, and finish. Whether it's a single workstation or a full floor, we install it right.",
+      "tags": ["Read plans", "Level finish", "Punch list"],
+      "lede": "We assemble, level, and finish. From one conference table to a whole floor of workstations, we install to spec and leave a clean punch list.",
+      "bullets": [
+        "Installers who read shop drawings and floor plans",
+        "All major brands — Herman Miller, Steelcase, Haworth, Knoll, Allsteel",
+        "Height-adjustable desks, monitor arms, power & data routing",
+        "Debris removal and cardboard recycling included"
+      ]
+    },
+    {
+      "num": "04",
+      "slug": "Systems",
+      "title": "Cubicle & modular systems",
+      "shortDesc": "Herman Miller, Steelcase, Haworth, Knoll — we install and reconfigure modular systems to spec, on time, with clean finishes.",
+      "tags": ["Install", "Reconfigure", "Relocate"],
+      "lede": "Panel systems, benching, private offices — we install new, reconfigure existing, and relocate whole pods without losing parts.",
+      "bullets": [
+        "Full panel system installs from pallets to finished floor",
+        "Reconfiguration with inventory accounting for every part",
+        "Electrical whip coordination with your electrician",
+        "Parts sourcing for legacy systems (Ethospace, Action Office, etc.)"
+      ]
+    },
+    {
+      "num": "05",
+      "slug": "Decom",
+      "title": "Decommissioning & liquidation",
+      "shortDesc": "When a space is done, we clear it out — disassembly, hauling, donation routing, and broom-swept handoff back to the landlord.",
+      "tags": ["Disassemble", "Donate", "Broom-swept"],
+      "lede": "When a lease ends, we clear the space. Disassembly, hauling, donation routing, and a broom-swept handoff ready for the landlord walk.",
+      "bullets": [
+        "Inventory assessment and liquidation plan",
+        "Donation to nonprofits and schools (with receipts)",
+        "Certified recycling for e-waste and metal",
+        "Broom-swept delivery ready for landlord inspection"
+      ]
+    }
+  ]
+}

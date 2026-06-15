@@ -1,0 +1,37 @@
+{
+  "name": "AGD Installation",
+  "logoMark": "AGD",
+  "phone": "(510) 555-0199",
+  "phoneHref": "+15105550199",
+  "email": "jesus.b@agdinstallation.com",
+  "location": "Hayward, CA",
+  "coverage": "California + beyond",
+  "responseTime": "< 24 hours",
+  "footerBlurb": "Commercial furniture moving, office relocation, and installation services. Based in Hayward — serving California and beyond.",
+  "hero": {
+    "eyebrow": "Commercial moving & installation",
+    "headline": "Built to move",
+    "headlineAccent": "what keeps you working.",
+    "sub": "Commercial furniture moving, office relocation, and installation for California businesses. Crews that show up, plans that hold, and a finish that's ready for Monday morning.",
+    "ctaPrimary": "Request a quote",
+    "ctaSecondary": "What we do"
+  },
+  "heroStats": [
+    { "num": "12+", "label": "Years moving offices" },
+    { "num": "500+", "label": "Relocations completed" },
+    { "num": "CA", "label": "Licensed & insured" },
+    { "num": "24/7", "label": "Weekend installs" }
+  ],
+  "statsRow": [
+    { "num": "500+", "label": "Offices relocated" },
+    { "num": "12 yrs", "label": "In business" },
+    { "num": "98%", "label": "On-time delivery" },
+    { "num": "$5M", "label": "Liability coverage" }
+  ],
+  "hours": [
+    { "label": "Monday – Friday", "value": "7:00 AM — 6:00 PM" },
+    { "label": "Saturday", "value": "By appointment" },
+    { "label": "Sunday", "value": "Closed" },
+    { "label": "After-hours moves", "value": "Available" }
+  ]
+}

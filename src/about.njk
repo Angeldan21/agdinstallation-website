@@ -1,13 +1,11 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>About — AGD Installation</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css">
+---
+title: "About — AGD Installation"
+pageKey: about
+permalink: "about.html"
+---
+{% extends "base.njk" %}
+
+{% block style %}
 <style>
   .page-hero {
     padding: 80px 0 48px;
@@ -108,11 +106,9 @@
   .team .person p { font-size: 13px; color: var(--muted); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 4px; }
   @media (max-width: 900px) { .team { grid-template-columns: 1fr 1fr; } }
 </style>
-</head>
-<body>
+{% endblock %}
 
-<div id="site-nav"></div>
-
+{% block body %}
 <main>
   <section class="page-hero">
     <div class="container">
@@ -253,10 +249,4 @@
     </div>
   </section>
 </main>
-
-<div id="site-footer"></div>
-
-<script src="assets/partials.js"></script>
-<script> renderSiteChrome('about'); </script>
-</body>
-</html>
+{% endblock %}

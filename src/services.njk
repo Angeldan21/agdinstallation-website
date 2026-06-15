@@ -1,13 +1,11 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Services — AGD Installation</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css">
+---
+title: "Services — AGD Installation"
+pageKey: services
+permalink: "services.html"
+---
+{% extends "base.njk" %}
+
+{% block style %}
 <style>
   .page-hero {
     padding: 80px 0 72px;
@@ -104,11 +102,9 @@
   }
   @media (max-width: 900px) { .capabilities .grid { grid-template-columns: 1fr; } }
 </style>
-</head>
-<body>
+{% endblock %}
 
-<div id="site-nav"></div>
-
+{% block body %}
 <main>
   <section class="page-hero">
     <div class="container">
@@ -130,110 +126,23 @@
   <section style="padding: 0 0 80px;">
     <div class="container">
 
+      {% for s in services.items %}
       <div class="svc-row">
-        <div class="num">01</div>
+        <div class="num">{{ s.num }}</div>
         <div>
-          <h2>Commercial furniture moving</h2>
+          <h2>{{ s.title }}</h2>
           <div class="tags">
-            <span class="badge">Desks</span>
-            <span class="badge">Conference tables</span>
-            <span class="badge">Lounge &amp; lobby</span>
+            {% for t in s.tags %}<span class="badge">{{ t }}</span>{% endfor %}
           </div>
         </div>
         <div>
-          <p class="lede">The core of what we do. Pad-wrapped, route-planned, and handled by crews who move offices for a living — not a side gig.</p>
+          <p class="lede">{{ s.lede }}</p>
           <ul>
-            <li>Pad-wrap and shrink-wrap protection on every piece</li>
-            <li>Elevator pads, floor runners, and wall protection on site</li>
-            <li>Inventory tagging and room-by-room placement</li>
-            <li>Nights, weekends, and after-hours scheduling</li>
+            {% for b in s.bullets %}<li>{{ b }}</li>{% endfor %}
           </ul>
         </div>
       </div>
-
-      <div class="svc-row">
-        <div class="num">02</div>
-        <div>
-          <h2>Office relocation</h2>
-          <div class="tags">
-            <span class="badge">End-to-end</span>
-            <span class="badge">Multi-floor</span>
-            <span class="badge">Multi-site</span>
-          </div>
-        </div>
-        <div>
-          <p class="lede">A single point of contact for the whole move — from the first walkthrough to the Monday-morning restart.</p>
-          <ul>
-            <li>Move plan, labeling system, and phased schedule</li>
-            <li>Certificate of Insurance and building coordination</li>
-            <li>IT equipment handling with disconnect / reconnect support</li>
-            <li>Reset to spec: everything plugged in and working</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="svc-row">
-        <div class="num">03</div>
-        <div>
-          <h2>Furniture assembly &amp; installation</h2>
-          <div class="tags">
-            <span class="badge">Read plans</span>
-            <span class="badge">Level finish</span>
-            <span class="badge">Punch list</span>
-          </div>
-        </div>
-        <div>
-          <p class="lede">We assemble, level, and finish. From one conference table to a whole floor of workstations, we install to spec and leave a clean punch list.</p>
-          <ul>
-            <li>Installers who read shop drawings and floor plans</li>
-            <li>All major brands — Herman Miller, Steelcase, Haworth, Knoll, Allsteel</li>
-            <li>Height-adjustable desks, monitor arms, power &amp; data routing</li>
-            <li>Debris removal and cardboard recycling included</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="svc-row">
-        <div class="num">04</div>
-        <div>
-          <h2>Cubicle &amp; modular systems</h2>
-          <div class="tags">
-            <span class="badge">Install</span>
-            <span class="badge">Reconfigure</span>
-            <span class="badge">Relocate</span>
-          </div>
-        </div>
-        <div>
-          <p class="lede">Panel systems, benching, private offices — we install new, reconfigure existing, and relocate whole pods without losing parts.</p>
-          <ul>
-            <li>Full panel system installs from pallets to finished floor</li>
-            <li>Reconfiguration with inventory accounting for every part</li>
-            <li>Electrical whip coordination with your electrician</li>
-            <li>Parts sourcing for legacy systems (Ethospace, Action Office, etc.)</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="svc-row">
-        <div class="num">05</div>
-        <div>
-          <h2>Decommissioning &amp; liquidation</h2>
-          <div class="tags">
-            <span class="badge">Disassemble</span>
-            <span class="badge">Donate</span>
-            <span class="badge">Broom-swept</span>
-          </div>
-        </div>
-        <div>
-          <p class="lede">When a lease ends, we clear the space. Disassembly, hauling, donation routing, and a broom-swept handoff ready for the landlord walk.</p>
-          <ul>
-            <li>Inventory assessment and liquidation plan</li>
-            <li>Donation to nonprofits and schools (with receipts)</li>
-            <li>Certified recycling for e-waste and metal</li>
-            <li>Broom-swept delivery ready for landlord inspection</li>
-          </ul>
-        </div>
-      </div>
+      {% endfor %}
 
     </div>
   </section>
@@ -268,10 +177,4 @@
     </div>
   </section>
 </main>
-
-<div id="site-footer"></div>
-
-<script src="assets/partials.js"></script>
-<script> renderSiteChrome('services'); </script>
-</body>
-</html>
+{% endblock %}

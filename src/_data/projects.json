@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "size": "wide",
+      "category": "relocation",
+      "categoryLabel": "Relocation",
+      "year": "2025",
+      "city": "Oakland",
+      "title": "Crestline Marketing — 42,000 sq ft weekend relocation",
+      "description": "180 workstations, 12 conference rooms, one weekend. Team walked in Monday at 9:00 to a fully reset floor, IT online.",
+      "image": ""
+    },
+    {
+      "size": "default",
+      "category": "install",
+      "categoryLabel": "Install",
+      "year": "2025",
+      "city": "San Francisco",
+      "title": "Pacific/OS — 90 workstation install",
+      "description": "New Steelcase benching across two floors, including height-adjustable desks and monitor arms.",
+      "image": ""
+    },
+    {
+      "size": "default",
+      "category": "systems",
+      "categoryLabel": "Systems",
+      "year": "2024",
+      "city": "Fremont",
+      "title": "Monolith Labs — Ethospace reconfiguration",
+      "description": "Reconfigured 60 Herman Miller Ethospace stations into team pods across one floor.",
+      "image": ""
+    },
+    {
+      "size": "third",
+      "category": "decom",
+      "categoryLabel": "Decom",
+      "year": "2025",
+      "city": "Berkeley",
+      "title": "Full-floor decommissioning",
+      "description": "Ten-day clear-out with nonprofit donation routing and broom-swept landlord handoff.",
+      "image": ""
+    },
+    {
+      "size": "third",
+      "category": "relocation",
+      "categoryLabel": "Relocation",
+      "year": "2024",
+      "city": "San Jose",
+      "title": "NorthBay HQ move",
+      "description": "Two-building consolidation, 120 people, three phased weekends.",
+      "image": ""
+    },
+    {
+      "size": "third",
+      "category": "install",
+      "categoryLabel": "Install",
+      "year": "2024",
+      "city": "Hayward",
+      "title": "Hayward Labs fit-out",
+      "description": "Brand-new lab fit-out with benching, lounge, and executive offices from pallets up.",
+      "image": ""
+    }
+  ]
+}

@@ -1,13 +1,11 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Request a Quote — AGD Installation</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css">
+---
+title: "Request a Quote — AGD Installation"
+pageKey: contact
+permalink: "contact.html"
+---
+{% extends "base.njk" %}
+
+{% block style %}
 <style>
   .contact-wrap {
     padding: 64px 0 120px;
@@ -169,11 +167,9 @@
   .hours-list { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; font-size: 14px; color: var(--ink-2); }
   .hours-list div { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px dashed var(--line-2); }
 </style>
-</head>
-<body>
+{% endblock %}
 
-<div id="site-nav"></div>
-
+{% block body %}
 <main class="contact-wrap">
   <div class="container">
     <div class="inner">
@@ -184,20 +180,19 @@
         <p class="lede">Fill out the form and we'll get back within 24 hours. For urgent jobs, call us — we pick up.</p>
 
         <div class="info-card">
-          <div class="row"><span class="lbl">Phone</span><span class="val">(510) 555-0199</span></div>
-          <div class="row"><span class="lbl">Email</span><span class="val">jesus.b@agdinstallation.com</span></div>
-          <div class="row"><span class="lbl">Based</span><span class="val">Hayward, CA</span></div>
-          <div class="row"><span class="lbl">Coverage</span><span class="val">California + beyond</span></div>
-          <div class="row"><span class="lbl">Response</span><span class="val">&lt; 24 hours</span></div>
+          <div class="row"><span class="lbl">Phone</span><span class="val">{{ site.phone }}</span></div>
+          <div class="row"><span class="lbl">Email</span><span class="val">{{ site.email }}</span></div>
+          <div class="row"><span class="lbl">Based</span><span class="val">{{ site.location }}</span></div>
+          <div class="row"><span class="lbl">Coverage</span><span class="val">{{ site.coverage }}</span></div>
+          <div class="row"><span class="lbl">Response</span><span class="val">{{ site.responseTime }}</span></div>
         </div>
 
         <div style="margin-top:32px;">
           <span class="mono">Office hours</span>
           <div class="hours-list">
-            <div><span>Monday – Friday</span><span>7:00 AM — 6:00 PM</span></div>
-            <div><span>Saturday</span><span>By appointment</span></div>
-            <div><span>Sunday</span><span>Closed</span></div>
-            <div><span>After-hours moves</span><span style="color:var(--accent); font-weight:600;">Available</span></div>
+            {% for h in site.hours %}
+            <div><span>{{ h.label }}</span><span{% if h.value == 'Available' %} style="color:var(--accent); font-weight:600;"{% endif %}>{{ h.value }}</span></div>
+            {% endfor %}
           </div>
         </div>
       </div>
@@ -302,24 +297,17 @@
         <div class="success" id="successMsg">
           <div class="check">✓</div>
           <h3>Thanks — we've got it.</h3>
-          <p>We'll review the details and get back within 24 hours, usually much sooner. For urgent work, call (510) 555-0199.</p>
+          <p>We'll review the details and get back within 24 hours, usually much sooner. For urgent work, call {{ site.phone }}.</p>
         </div>
       </div>
 
     </div>
   </div>
 </main>
+{% endblock %}
 
-<div id="site-footer"></div>
-
-<script src="assets/partials.js"></script>
+{% block scripts %}
 <script>
-  renderSiteChrome('contact');
-  (function(){
-    const btn = document.querySelector('#site-nav .nav-links > .btn');
-    if (btn) { btn.style.borderColor = 'rgb(38, 38, 38)'; btn.style.color = 'rgb(255, 255, 255)'; }
-  })();
-
   // Form validation + Web3Forms submit
   const form = document.getElementById('quoteForm');
   const successMsg = document.getElementById('successMsg');
@@ -363,7 +351,7 @@
     } catch (err) {
       submitBtn.disabled = false;
       submitBtn.textContent = submitBtnLabel;
-      alert("Sorry — we couldn't send your request. Please call (510) 555-0199 or email jesus.b@agdinstallation.com directly.");
+      alert("Sorry — we couldn't send your request. Please call {{ site.phone }} or email {{ site.email }} directly.");
     }
   });
 
@@ -374,5 +362,4 @@
     });
   });
 </script>
-</body>
-</html>
+{% endblock %}

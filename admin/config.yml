@@ -1,0 +1,121 @@
+backend:
+  name: github
+  repo: Angeldan21/agdinstallation-website
+  branch: main
+
+# Uploaded images are committed here and served from /uploads on the live site.
+media_folder: "src/uploads"
+public_folder: "/uploads"
+
+# A friendly site name shown in the editor UI.
+site_url: "https://agdinstallation.com"
+display_url: "https://agdinstallation.com"
+
+collections:
+  # ---------------------------------------------------------------------------
+  - name: site
+    label: "Business info & homepage"
+    description: "Phone, email, hours, and the homepage hero / stats."
+    files:
+      - name: general
+        label: "Business info, hero & stats"
+        file: "src/_data/site.json"
+        fields:
+          - { name: name, label: "Business name", widget: string }
+          - { name: logoMark, label: "Logo text (short, e.g. AGD)", widget: string }
+          - { name: phone, label: "Phone (as shown)", widget: string }
+          - { name: phoneHref, label: "Phone (dial format, e.g. +15105550199)", widget: string }
+          - { name: email, label: "Email", widget: string }
+          - { name: location, label: "Location", widget: string }
+          - { name: coverage, label: "Coverage area", widget: string }
+          - { name: responseTime, label: "Response time", widget: string }
+          - { name: footerBlurb, label: "Footer description", widget: text }
+          - name: hero
+            label: "Homepage hero"
+            widget: object
+            fields:
+              - { name: eyebrow, label: "Small label above headline", widget: string }
+              - { name: headline, label: "Headline — line 1", widget: string }
+              - { name: headlineAccent, label: "Headline — colored line 2", widget: string }
+              - { name: sub, label: "Subtext", widget: text }
+              - { name: ctaPrimary, label: "Primary button text", widget: string }
+              - { name: ctaSecondary, label: "Secondary button text", widget: string }
+          - name: heroStats
+            label: "Hero stats (the 4 numbers under the hero)"
+            widget: list
+            fields:
+              - { name: num, label: "Number", widget: string }
+              - { name: label, label: "Label", widget: string }
+          - name: statsRow
+            label: "Stats row (mid-page numbers)"
+            widget: list
+            fields:
+              - { name: num, label: "Number", widget: string }
+              - { name: label, label: "Label", widget: string }
+          - name: hours
+            label: "Office hours"
+            widget: list
+            fields:
+              - { name: label, label: "Day(s)", widget: string }
+              - { name: value, label: "Hours", widget: string }
+
+  # ---------------------------------------------------------------------------
+  - name: services
+    label: "Services"
+    description: "The five service offerings (shown on the homepage and Services page)."
+    files:
+      - name: services
+        label: "All services"
+        file: "src/_data/services.json"
+        fields:
+          - name: items
+            label: "Services"
+            label_singular: "Service"
+            widget: list
+            summary: "{{fields.num}} — {{fields.title}}"
+            fields:
+              - { name: num, label: "Number (e.g. 01)", widget: string }
+              - { name: slug, label: "Short label (e.g. Moving)", widget: string }
+              - { name: title, label: "Title", widget: string }
+              - { name: shortDesc, label: "Short description (homepage card)", widget: text }
+              - { name: lede, label: "Intro line (Services page)", widget: text }
+              - name: tags
+                label: "Tags"
+                widget: list
+                field: { name: tag, label: "Tag", widget: string }
+              - name: bullets
+                label: "Bullet points"
+                widget: list
+                field: { name: bullet, label: "Bullet", widget: string }
+
+  # ---------------------------------------------------------------------------
+  - name: projects
+    label: "Projects"
+    description: "Recent jobs shown on the Projects page. Add, edit, reorder, or remove."
+    files:
+      - name: projects
+        label: "All projects"
+        file: "src/_data/projects.json"
+        fields:
+          - name: items
+            label: "Projects"
+            label_singular: "Project"
+            widget: list
+            summary: "{{fields.year}} · {{fields.title}}"
+            fields:
+              - { name: title, label: "Title", widget: string }
+              - name: size
+                label: "Card size"
+                widget: select
+                options: ["wide", "default", "third"]
+                default: "default"
+                hint: "wide = full row, default = half row, third = small"
+              - name: category
+                label: "Category (controls the filter)"
+                widget: select
+                options: ["relocation", "install", "systems", "decom"]
+              - { name: categoryLabel, label: "Category label (shown on card)", widget: string }
+              - { name: year, label: "Year", widget: string }
+              - { name: city, label: "City", widget: string }
+              - { name: description, label: "Description", widget: text }
+              - { name: image, label: "Photo (optional)", widget: image, required: false }
